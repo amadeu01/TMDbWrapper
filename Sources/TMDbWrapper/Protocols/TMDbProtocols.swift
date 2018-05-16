@@ -52,3 +52,85 @@ protocol MovieProtocol {
     
     func getUpcoming(region: String?, completionHandler: @escaping (MovieUpcomingResponse?) -> Void)
 }
+
+protocol Configuration {
+    func getApiConfiguration()
+    
+    func getCountries()
+    
+    func getJobs()
+    
+    func getLanguages()
+    
+    func getPrimaryTranslantions()
+    
+    func getTimezones()
+}
+
+protocol Discover {
+    func getMovieDiscover()
+    
+    func getTVDiscover()
+}
+
+protocol Genres {
+    func getMovieList()
+    
+    func getTVList()
+    
+    /*
+     You should use  (with the with_genres fileter) instead of this method as it is much more flexible and will provide the same data with many more options and filters.
+     */
+    func getMovies() // Deprecated
+}
+
+protocol Search {
+    func searchCompanies()
+    
+    func searchCollection()
+    
+    func searchKeywords()
+    
+    func searchMovie()
+    
+    func multiSearch()
+    
+    func searchTVShows()
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
