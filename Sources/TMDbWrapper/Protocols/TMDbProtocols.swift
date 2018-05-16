@@ -8,9 +8,9 @@
 import Foundation
 
 protocol MovieProtocol {
-    func getDetail(movieId: Int, completionHandler: @escaping (String) -> Void)
+    func getDetail(movieId: Int, completionHandler: @escaping (MovieDetailsResponse?) -> Void)
     
-    func getAccountStates()
+    func getAccountStates(completionHandler: @escaping (Data) -> Void)
     
     func getAlternativeTitles()
 
@@ -20,7 +20,7 @@ protocol MovieProtocol {
     
     func getExternalIDs()
     
-    func getImages()
+    func getImages(completionHandler: @escaping (Data) -> Void)
     
     func getKeywords()
     
@@ -30,13 +30,13 @@ protocol MovieProtocol {
     
     func getTranslations()
     
-    func getRecommendations()
+    func getRecommendations(completionHandler: @escaping (Data) -> Void)
     
-    func getSimilarMovies()
+    func getSimilarMovies(completionHandler: @escaping (Data) -> Void)
     
-    func getReviews()
+    func getReviews(completionHandler: @escaping (Data) -> Void)
     
-    func getLists()
+    func getLists(completionHandler: @escaping (Data) -> Void)
     
     func rateMovie()
     
@@ -46,9 +46,9 @@ protocol MovieProtocol {
     
     func getNowPlaying()
     
-    func getPopular()
+    func getPopular(completionHandler: @escaping (Data) -> Void)
     
     func getTopRated()
     
-    func getUpcoming(region: String?, completionHandler: @escaping (Data) -> Void)
+    func getUpcoming(region: String?, completionHandler: @escaping (MovieUpcomingResponse?) -> Void)
 }

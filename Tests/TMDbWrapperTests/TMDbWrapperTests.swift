@@ -10,9 +10,12 @@ final class TMDbWrapperTests: XCTestCase {
     }
     
     func testGetMovieDetail() {
-        movie?.getDetail(movieId: 1) { response in
+        let expectation = XCTestExpectation(description: "Movie Detail")
+        movie?.getDetail(movieId: 10) { response in
             print(response)
+            expectation.fulfill()
         }
+        wait(for: [expectation], timeout: 10.0)
     }
     
     
@@ -20,7 +23,6 @@ final class TMDbWrapperTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Upcoming movies")
         movie?.getUpcoming { response in
             print(response)
-            let encodedJson = try? JSONDecoder().decode(MovieUpcomingResponse.self, from: response)
             expectation.fulfill()
         }
         

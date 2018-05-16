@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 
 class Movie: MovieProtocol {
+    
     let config: Config
     let endpoint: String
     let parameters: Parameters
@@ -22,24 +23,28 @@ class Movie: MovieProtocol {
         ]
     }
     
-    func getDetail(movieId: Int, completionHandler: @escaping (String) -> Void) {
+    func getDetail(movieId: Int, completionHandler: @escaping (MovieDetailsResponse?) -> Void) {
         let path = "\(endpoint)/\(movieId)"
         
-        Alamofire.request(path, parameters: parameters).responseJSON { response in
+        Alamofire.request(path, parameters: parameters).debugLog().responseJSON { response in
             if let json = response.result.value {
-                completionHandler("Json: \(json)")
+                if let data = try? JSONSerialization.data(withJSONObject: json) {
+                    let movieDetailResponse = try? JSONDecoder().decode(MovieDetailsResponse.self, from: data)
+                    completionHandler(movieDetailResponse)
+                }
                 print("Json: \(json)")
             }
         }
     }
     
-    func getUpcoming(region: String? = nil, completionHandler: @escaping (Data) -> Void) {
+    func getUpcoming(region: String? = nil, completionHandler: @escaping (MovieUpcomingResponse?) -> Void) {
         let path = "\(endpoint)/upcoming"
         
         Alamofire.request(path, parameters: parameters).responseJSON { response in
             if let json = response.result.value {
                 if let data = try? JSONSerialization.data(withJSONObject: json) {
-                    completionHandler(data)
+                    let movieUpcomingResponse = try? JSONDecoder().decode(MovieUpcomingResponse.self, from: data)
+                    completionHandler(movieUpcomingResponse)
                 }
                 
                 print("Json: \(json)")
@@ -47,7 +52,7 @@ class Movie: MovieProtocol {
         }
     }
     
-    func getAccountStates() {
+    func getAccountStates(completionHandler: @escaping (Data) -> Void) {
         
     }
     
@@ -67,7 +72,7 @@ class Movie: MovieProtocol {
         
     }
     
-    func getImages() {
+    func getImages(completionHandler: @escaping (Data) -> Void) {
         
     }
     
@@ -87,19 +92,19 @@ class Movie: MovieProtocol {
         
     }
     
-    func getRecommendations() {
+    func getRecommendations(completionHandler: @escaping (Data) -> Void) {
         
     }
     
-    func getSimilarMovies() {
+    func getSimilarMovies(completionHandler: @escaping (Data) -> Void) {
         
     }
     
-    func getReviews() {
+    func getReviews(completionHandler: @escaping (Data) -> Void) {
         
     }
     
-    func getLists() {
+    func getLists(completionHandler: @escaping (Data) -> Void) {
         
     }
     
@@ -119,7 +124,7 @@ class Movie: MovieProtocol {
         
     }
     
-    func getPopular() {
+    func getPopular(completionHandler: @escaping (Data) -> Void) {
         
     }
     
