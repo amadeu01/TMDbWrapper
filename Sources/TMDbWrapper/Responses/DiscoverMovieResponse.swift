@@ -10,7 +10,7 @@ import Foundation
 public struct DiscoverMovieResponse {
     
     public struct ResultsElement {
-        // public let posterPath: NullObject?
+        public let posterPath: String?
         public let adult: Bool?
         public let overview: String?
         public let releaseDate: String?
@@ -19,7 +19,7 @@ public struct DiscoverMovieResponse {
         public let originalTitle: String?
         public let originalLanguage: String?
         public let title: String?
-        // public let backdropPath: NullObject?
+        public let backdropPath: String?
         public let popularity: Double?
         public let voteCount: Int?
         public let video: Bool?
@@ -83,7 +83,7 @@ extension DiscoverMovieResponse.ResultsElement: Codable {
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        posterPath = try container.decodeIfPresent(NullObject.self, forKey: .posterPath)
+        posterPath = try container.decodeIfPresent(String.self, forKey: .posterPath)
         adult = try container.decodeIfPresent(Bool.self, forKey: .adult)
         overview = try container.decodeIfPresent(String.self, forKey: .overview)
         releaseDate = try container.decodeIfPresent(String.self, forKey: .releaseDate)
@@ -92,7 +92,7 @@ extension DiscoverMovieResponse.ResultsElement: Codable {
         originalTitle = try container.decodeIfPresent(String.self, forKey: .originalTitle)
         originalLanguage = try container.decodeIfPresent(String.self, forKey: .originalLanguage)
         title = try container.decodeIfPresent(String.self, forKey: .title)
-        backdropPath = try container.decodeIfPresent(NullObject.self, forKey: .backdropPath)
+        backdropPath = try container.decodeIfPresent(String.self, forKey: .backdropPath)
         popularity = try container.decodeIfPresent(Double.self, forKey: .popularity)
         voteCount = try container.decodeIfPresent(Int.self, forKey: .voteCount)
         video = try container.decodeIfPresent(Bool.self, forKey: .video)

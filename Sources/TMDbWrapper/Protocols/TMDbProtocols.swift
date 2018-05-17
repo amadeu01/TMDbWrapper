@@ -53,7 +53,7 @@ protocol MovieProtocol {
     func getUpcoming(region: String?, completionHandler: @escaping (MovieUpcomingResponse?) -> Void)
 }
 
-protocol Configuration {
+protocol ConfigurationProtocol {
     func getApiConfiguration()
     
     func getCountries()
@@ -67,13 +67,13 @@ protocol Configuration {
     func getTimezones()
 }
 
-protocol Discover {
+protocol DiscoverProtocol {
     func getMovieDiscover()
     
     func getTVDiscover()
 }
 
-protocol Genres {
+protocol GenreProtocol {
     func getMovieList()
     
     func getTVList()
@@ -84,7 +84,7 @@ protocol Genres {
     func getMovies() // Deprecated
 }
 
-protocol Search {
+protocol SearchProtocol {
     func searchCompanies()
     
     func searchCollection()

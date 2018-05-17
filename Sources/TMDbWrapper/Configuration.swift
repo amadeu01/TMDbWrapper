@@ -6,3 +6,31 @@
 //
 
 import Foundation
+
+class Configuration: ConfigurationProtocol {
+    func getApiConfiguration() {
+        
+    }
+    
+    func getCountries() {
+        
+    }
+    
+    func getJobs() {
+        
+    }
+    
+    func getLanguages() {
+        
+    }
+    
+    func getPrimaryTranslantions() {
+        
+    }
+    
+    func getTimezones() {
+        
+    }
+    
+    
+}

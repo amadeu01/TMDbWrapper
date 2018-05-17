@@ -5,13 +5,13 @@ final class TMDbWrapperTests: XCTestCase {
     var movie: Movie?
     
     override func setUp() {
-        let config = Config(apiKey: "", language: "pt-BR")
+        let config = Config(apiKey: "", language: "en-US")
         movie = Movie(config: config)
     }
     
     func testGetMovieDetail() {
         let expectation = XCTestExpectation(description: "Movie Detail")
-        movie?.getDetail(movieId: 10) { response in
+        movie?.getDetail(movieId: 102) { response in
             print(response)
             expectation.fulfill()
         }
